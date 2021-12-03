@@ -21,7 +21,9 @@ global_parse_day_and_lang "$@"
 
 while true; do
   set +e
-  find "day$DAY/" | entr -drc ./aoc-utils/run_current.sh "$@"
+  find "day$DAY/" \
+    | grep -v '.cp_cache' \
+    | entr -drc ./aoc-utils/run_current.sh "$@"
   set -e
   sleep 0.5
 done
