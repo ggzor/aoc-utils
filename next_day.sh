@@ -57,7 +57,7 @@ read -p "Which output do we expect?: " EXPECTED
   cat <<EOF
 # Part one
 check test.txt  1 <<< $EXPECTED
-_check input.txt 1 <<< 0
+# _check input.txt 1 <<< 0
 
 # Part two
 # check test.txt  2 <<< 0
