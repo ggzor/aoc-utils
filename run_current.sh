@@ -21,10 +21,9 @@ EOF
 
 DAY=infer
 LANG=infer
+TARGET_FILE=
 
 global_parse_day_and_lang "$@"
-
-TARGET_FILE="day$DAY/Day$DAY.$LANG"
 
 if [[ ! -f "$TARGET_FILE" ]]; then
   exit_error "'$TARGET_FILE' doesn't exist"
@@ -32,6 +31,7 @@ fi
 
 echo "Day: $DAY"
 echo "Language: $LANG"
+echo "File: $TARGET_FILE"
 echo
 ./cp-utils/check.sh "$TARGET_FILE"
 

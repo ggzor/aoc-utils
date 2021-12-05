@@ -32,11 +32,13 @@ global_parse_day_and_lang() {
   DAY=$(printf '%02d' "$DAY")
 
   if [[ $LANG == 'infer' ]]; then
-    TARGET=$( { find day"$DAY" -type f -name "[Dd]ay$DAY.*" -printf '%T@ %p\n' \
+    TARGET_FILE=$( { find day"$DAY" -type f -name "[Dd]ay$DAY.*" -printf '%T@ %p\n' \
             | sort -nr | head -1 \
             | grep . | cut -d' ' -f2- | xargs basename; } 2> /dev/null \
             || exit_error "No candidate file was found for day $DAY")
 
-    LANG=${TARGET#*.}
+    TARGET_FILE="day${DAY}/$TARGET_FILE"
+
+    LANG=${TARGET_FILE#*.}
   fi
 }
