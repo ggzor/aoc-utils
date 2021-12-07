@@ -44,10 +44,12 @@ fi
 echo "Setting up $DAY_DIR..."
 mkdir "$DAY_DIR"
 
-./cp-utils/copy-template.sh "$DAY_DIR" "$@"
-
 TEST_FILE=${DAY_DIR}/test.txt
 INPUT_FILE=${DAY_DIR}/input.txt
+SPEC_FILE=${DAY_DIR}/spec.sh
+
+./cp-utils/copy-template.sh "$DAY_DIR" "$@"
+touch "$SPEC_FILE" && "touch $SPEC_FILE"
 
 read -p "Press enter to paste the clipboard contents to ${TEST_FILE}..."
 xclip -o > "$TEST_FILE"
@@ -63,7 +65,7 @@ check test.txt  1 <<< $EXPECTED
 # check test.txt  2 <<< 0
 # _check input.txt 2 <<< 0
 EOF
-} > "$DAY_DIR/spec.sh"
+} > "$SPEC_FILE"
 
 if [[ -n "$COOKIE" ]]; then
   echo "Downloading input to $DAY_DIR..."
