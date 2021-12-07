@@ -49,7 +49,7 @@ INPUT_FILE=${DAY_DIR}/input.txt
 SPEC_FILE=${DAY_DIR}/spec.sh
 
 ./cp-utils/copy-template.sh "$DAY_DIR" "$@"
-touch "$SPEC_FILE" && "touch $SPEC_FILE"
+touch "$SPEC_FILE" && echo "touch $SPEC_FILE"
 
 read -p "Press enter to paste the clipboard contents to ${TEST_FILE}..."
 xclip -o > "$TEST_FILE"
